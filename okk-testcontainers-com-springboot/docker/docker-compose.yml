@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+
+  postgresql:
+    image: "postgres:14.1"
+    container_name: postgresql
+    ports:
+      - "5432:5432"
+    networks:
+      - testcontainers
+    environment:
+      - "POSTGRES_DB=testcontainers-db"
+      - "POSTGRES_USER=testcontainers-db"
+      - "POSTGRES_PASSWORD=testcontainers-db"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testcontainers-db"]
+      interval: 5s
+      timeout: 5s
+      retries: 6
+
+networks:
+  testcontainers:
+    driver: bridge
