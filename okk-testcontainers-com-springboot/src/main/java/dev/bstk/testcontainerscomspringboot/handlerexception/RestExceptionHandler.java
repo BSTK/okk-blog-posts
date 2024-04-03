@@ -1,5 +1,6 @@
-package dev.bstk.testcontainerscomspringboot.contabancaria.handlerexception;
+package dev.bstk.testcontainerscomspringboot.handlerexception;
 
+import dev.bstk.testcontainerscomspringboot.contabancaria.domain.exception.ContaBancariaJaExisteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

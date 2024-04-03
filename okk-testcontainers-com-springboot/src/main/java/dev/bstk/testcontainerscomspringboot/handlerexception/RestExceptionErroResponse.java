@@ -1,4 +1,4 @@
-package dev.bstk.testcontainerscomspringboot.contabancaria.handlerexception;
+package dev.bstk.testcontainerscomspringboot.handlerexception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

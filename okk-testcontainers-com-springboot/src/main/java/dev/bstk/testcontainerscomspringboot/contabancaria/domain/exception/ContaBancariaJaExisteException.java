@@ -1,4 +1,4 @@
-package dev.bstk.testcontainerscomspringboot.contabancaria.handlerexception;
+package dev.bstk.testcontainerscomspringboot.contabancaria.domain.exception;
 
 public class ContaBancariaJaExisteException extends RuntimeException {
 
