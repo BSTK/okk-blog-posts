@@ -2,6 +2,7 @@ package dev.bstk.testcontainerscomspringboot.api;
 
 
 import dev.bstk.okkutil.json.jackson.Json;
+import dev.bstk.testcontainerscomspringboot.AppTestContainer;
 import dev.bstk.testcontainerscomspringboot.contabancaria.api.ContaBancariaRequest;
 import dev.bstk.testcontainerscomspringboot.contabancaria.domain.ContaBancaria;
 import dev.bstk.testcontainerscomspringboot.contabancaria.domain.ContaBancariaRepository;
@@ -14,33 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-@Testcontainers
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ContaBancariaResourceITTest {
-
-  @Container
-  private static final PostgreSQLContainer<?> POSTGRESQL_DB = new PostgreSQLContainer("postgres:14.1")
-    .withDatabaseName("testcontainers-db")
-    .withUsername("testcontainers-db")
-    .withPassword("testcontainers-db");
-
-  @DynamicPropertySource
-  static void propertyConfig(final DynamicPropertyRegistry registry) {
-    registry.add("spring.datasource.url", POSTGRESQL_DB::getJdbcUrl);
-    registry.add("spring.datasource.username", POSTGRESQL_DB::getUsername);
-    registry.add("spring.datasource.password", POSTGRESQL_DB::getPassword);
-    registry.add("spring.datasource.driverClassName", POSTGRESQL_DB::getDriverClassName);
-
-    registry.add("spring.flyway.url", POSTGRESQL_DB::getJdbcUrl);
-    registry.add("spring.flyway.user", POSTGRESQL_DB::getUsername);
-    registry.add("spring.flyway.password", POSTGRESQL_DB::getPassword);
-  }
+class ContaBancariaResourceITTest extends AppTestContainer {
 
   @LocalServerPort
   private Integer portaHttp;
